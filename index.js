@@ -98,61 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let startStopButton = document.getElementById("start-stop");
   let intervalId;
   let startTime;
+  let timerStarted = false;
 
   addKeyClickEventListener(keys);
   console.log("added key click event");
 
   console.log(textField.placeholder);
 
-  //drop down stuff
-
-  const dropdownButtons = document.querySelectorAll('.dropdown i');
-  const dropdownMenus = document.querySelectorAll('.dropdown-content');
-  console.log(dropdownButtons);
-  console.log(dropdownMenus);
-  
-  // Add a click event listener to each dropdown button
-  dropdownButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      // Toggle the display of the corresponding dropdown menu
-      dropdownMenus[index].classList.toggle('show');
-    });
-  });
-  
-  // Close the dropdown menus if the user clicks outside of them
-  window.addEventListener('click', (event) => {
-    if (!event.target.matches('.dropdown i')) {
-      dropdownMenus.forEach((menu) => {
-        if (menu.classList.contains('show')) {
-          menu.classList.remove('show');
-        }
-      });
-    }
-  });
-
-  //   keys.forEach((key) => {
-  //     key.addEventListener("click", () => {
-  //       textField.value += key.innerText;
-  //       console.log(key.innerText);
-  //       //NEED EVENT LISTENER ON KEY CAUSE INPUT IS SET TO KEYBOARD
-  //       if (textField.value === textField.placeholder) {
-  //         console.log("Inner text matches placeholder text");
-  //         if (counter === 5) {
-  //           alert("you did it!");
-  //           counter = 1;
-  //         } else {
-  //           counter++;
-  //           newKeyboard();
-  //           console.log(counter);
-  //           textField = document.getElementById("text-field" + counter);
-  //           console.log(textField.value);
-
-  //         }
-  //       } else {
-  //         console.log("Inner text does not match placeholder text");
-  //       }
-  //     });
-  //   });
 
   function handleKeyClick(event) {
     textField.value += event.target.innerText;
@@ -162,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Inner text matches placeholder text");
       if (counter === 5) {
         alert("you did it!");
+        stopTimer();
         counter = 1;
       } else {
         counter++;
@@ -185,6 +138,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function addKeyClickEventListener(keys) {
     keys.forEach((key) => {
       key.addEventListener("click", handleKeyClick);
+      key.addEventListener("click", function (event) {
+        if (!timerStarted) {
+          startTimer();
+          timerStarted = true;
+        }
+      });
     });
   }
 
@@ -198,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function newKeyboard() {
     // get rows, clear rows,
-    const buttonsToClear = document.querySelectorAll("button.key");
+    const buttonsToClear = document.querySelectorAll("h2.key");
     let clearBtn = document.querySelector(".clear");
     let deleteBtn = document.querySelector(".delete");
     deleteBtn.remove();
@@ -241,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //ROW 1
     const row1 = document.querySelector(".row1");
     for (let i = 0; i < 6; i++) {
-      const button = document.createElement("button");
+      const button = document.createElement("h2");
       // Set the class and data-key attributes
       button.classList.add("key");
       button.textContent = useArray[i].toUpperCase();
@@ -249,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //add delete button
-    const deleteButton = document.createElement("button");
+    const deleteButton = document.createElement("h2");
     // Set the class and data-key attributes
     deleteButton.classList.add("delete");
     deleteButton.innerText = "\u2421";
@@ -258,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //ROW 2
     const row2 = document.querySelector(".row2");
     for (let i = 6; i < 13; i++) {
-      const button = document.createElement("button");
+      const button = document.createElement("h2");
       // Set the class and data-key attributes
       button.classList.add("key");
       button.textContent = useArray[i].toUpperCase();
@@ -268,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //ROW 3
     const row3 = document.querySelector(".row3");
     for (let i = 13; i < 20; i++) {
-      const button = document.createElement("button");
+      const button = document.createElement("h2");
       // Set the class and data-key attributes
       button.classList.add("key");
       button.textContent = useArray[i].toUpperCase();
@@ -278,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //ROW 4
     const row4 = document.querySelector(".row4");
     for (let i = 20; i < 26; i++) {
-      const button = document.createElement("button");
+      const button = document.createElement("h2");
       // Set the class and data-key attributes
       button.classList.add("key");
       button.textContent = useArray[i].toUpperCase();
@@ -286,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //add clear button
-    const clearButton = document.createElement("button");
+    const clearButton = document.createElement("h2");
     // Set the class and data-key attributes
     clearButton.classList.add("clear");
     clearButton.innerText = "\u2327";
@@ -330,15 +289,15 @@ document.addEventListener("DOMContentLoaded", () => {
       .padStart(2, "0")}`;
   }
 
-  startStopButton.addEventListener("click", function () {
-    if (startStopButton.innerText === "Start") {
-      startStopButton.innerText = "Stop";
-      startTimer();
-    } else {
-      startStopButton.innerText = "Start";
-      stopTimer();
-    }
-  });
+  // startStopButton.addEventListener("click", function () {
+  //   if (startStopButton.innerText === "Start") {
+  //     startStopButton.innerText = "Stop";
+  //     startTimer();
+  //   } else {
+  //     startStopButton.innerText = "Start";
+  //     stopTimer();
+  //   }
+  // });
 
   // so i'm going to need an event listener that's watching for when textfield inner text matches placeholder text
   textField = document.getElementById("text-field1");
@@ -352,5 +311,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  
+  //dropdown stuff
+
+  const dropIcons = document.querySelectorAll('.dropIcon');
+
+dropIcons.forEach((icon) => {
+  icon.addEventListener('click', () => {
+    console.log("you clicked a dropdown button")
+    const dropdown = icon.parentNode;
+    console.log(dropdown);
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
+    console.log(dropdownContent);
+    dropdownContent.classList.toggle('show');
+  });
+});
 });

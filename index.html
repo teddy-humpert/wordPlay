@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Oswald:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" 
+    <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
@@ -22,19 +22,19 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
   </head>
   <body>
-    <!-- <h1 id="gameTitle">WordPlay</h1> -->
+    <h1 id="gameTitle">WordPlay</h1>
     <nav>
       <div class="dropdown">
-        <i class="fa fa-bars" ></i>
-        <div class="dropdown-content show">
+        <i id="dropIcon" class="fa fa-bars dropIcon" ></i>
+        <div class="dropdown-content">
           <a href="#">Link 1</a>
           <a href="#">Link 2</a>
           <a href="#">Link 3</a>
         </div>
       </div>
       <div class="dropdown dropdown-right">
-        <i class="fa fa-gear"></i>
-        <div class="dropdown-content show">
+        <i id="dropIcon" class="fa fa-gear dropIcon"></i>
+        <div class="dropdown-content">
           <a href="#">Option 1</a>
           <a href="#">Option 2</a>
           <a href="#">Option 3</a>
@@ -44,7 +44,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
    
     <div id="stopwatch">
       <p id="timer">00:00</p>
-      <button id="start-stop">Start</button>
+      <!-- <h2 id="start-stop">Start</h2> -->
     </div>
     <div class="textFields">
       <input type="text" id="text-field1" />
@@ -55,44 +55,48 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     </div>
     <div id="keyboard">
       <div class="row1">
-        <button class="key">Q</button>
-        <button class="key">W</button>
-        <button class="key">E</button>
-        <button class="key">R</button>
-        <button class="key">T</button>
-        <button class="key">Y</button>
-        <button class="delete">&#x2421;</button>
+        <h2 class="key">Q</h2>
+        <h2 class="key">W</h2>
+        <h2 class="key">E</h2>
+        <h2 class="key">R</h2>
+        <h2 class="key">T</h2>
+        <h2 class="key">Y</h2>
+        <h2 class="delete">&#x2421;</h2>
       </div>
       <div class="row2">
-        <button class="key">U</button>
-        <button class="key">I</button>
-        <button class="key">O</button>
-        <button class="key">P</button>
-        <button class="key">A</button>
-        <button class="key">S</button>
-        <button class="key">D</button>
+        <h2 class="key">U</h2>
+        <h2 class="key">I</h2>
+        <h2 class="key">O</h2>
+        <h2 class="key">P</h2>
+        <h2 class="key">A</h2>
+        <h2 class="key">S</h2>
+        <h2 class="key">D</h2>
       </div>
       <div class="row3">
-        <button class="key">F</button>
-        <button class="key">G</button>
-        <button class="key">H</button>
-        <button class="key">J</button>
-        <button class="key">K</button>
-        <button class="key">L</button>
-        <button class="key">Z</button>
+        <h2 class="key">F</h2>
+        <h2 class="key">G</h2>
+        <h2 class="key">H</h2>
+        <h2 class="key">J</h2>
+        <h2 class="key">K</h2>
+        <h2 class="key">L</h2>
+        <h2 class="key">Z</h2>
       </div>
       <div class="row4">
-        <button class="key">X</button>
-        <button class="key">C</button>
-        <button class="key">V</button>
-        <button class="key">B</button>
-        <button class="key">N</button>
-        <button class="key">M</button>
-        <button class="clear">&#x2327;</button>
+        <h2 class="key">X</h2>
+        <h2 class="key">C</h2>
+        <h2 class="key">V</h2>
+        <h2 class="key">B</h2>
+        <h2 class="key">N</h2>
+        <h2 class="key">M</h2>
+        <h2 class="clear">&#x2327;</h2>
       </div>
     </div>
-    <!-- <button class="newKeyboard">New Keyboard</button> -->
+    <!-- <h2 class="newKeyboard">New Keyboard</h2> -->
+
 
     <script src="index.js"></script>
   </body>
 </html>
+
+
+
