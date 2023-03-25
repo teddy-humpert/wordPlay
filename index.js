@@ -11,9 +11,83 @@
 
 // let's get shuffle keyboard function down
 
+const wordlist = [
+  "PRINT",
+  "VIGOR",
+  "PLACE",
+  "CLEAN",
+  "QUIET",
+  "NEEDS",
+  "THEIR",
+  "RUPEE",
+  "HOPES",
+  "FIELD",
+  "PRICE",
+  "UNITE",
+  "POINT",
+  "IONIC",
+  "MONEY",
+  "LEAST",
+  "WATER",
+  "OLIVE",
+  "VAULT",
+  "TOTAL",
+  "UNCLE",
+  "NIECE",
+  "ARGUE",
+  "CHILD",
+  "ZONED",
+  "YOUTH",
+  "HOUSE",
+  "PLANT",
+  "GRIMY",
+  "BOOST",
+  "CHEER",
+  "UNDUE",
+  "CHECK",
+  "BEERS",
+  "GIVER",
+  "APPLE",
+  "ANGER",
+  "AMBER",
+  "BRACE",
+  "BOINK",
+  "BRAVE",
+  "CRAZY",
+  "COUNT",
+  "CRIMP",
+  "CREST",
+  "CHEST",
+  "CACHE",
+  "DRUNK",
+  "DRINK",
+  "DRAIN",
+  "DUNCE",
+];
+
+// shuffle wordList and add to placeholder text for each text field
+// then deal with actual matching from keyboard and movement from there
+// should have everything locked until the player hits start.
+let playWordList = shuffleArray(wordlist);
+for (let i = 1; i < 6; i++) {
+  let textField = document.getElementById("text-field" + i);
+  textField.placeholder = playWordList[i];
+  textField.disabled = true; // disables other keyboards - can only use buttons
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  let counter = 1;
+    console.log(counter);
   const keys = document.querySelectorAll(".key");
-  const textField = document.getElementById("text-field");
+  let textField = document.getElementById("text-field" + counter);
   const currentValue = textField.value;
   const clearBtn = document.querySelector(".clear");
   const deleteBtn = document.querySelector(".delete");
@@ -23,9 +97,29 @@ document.addEventListener("DOMContentLoaded", () => {
   let intervalId;
   let startTime;
 
+  console.log(textField.placeholder);
+
   keys.forEach((key) => {
     key.addEventListener("click", () => {
       textField.value += key.innerText;
+      console.log(key.innerText);
+      //NEED EVENT LISTENER ON KEY CAUSE INPUT IS SET TO KEYBOARD
+      if (textField.value === textField.placeholder) {
+        console.log("Inner text matches placeholder text");
+        if (counter === 5) {
+          alert("you did it!");
+          counter = 1;
+        } else {
+          counter++;
+          newKeyboard();
+          console.log(counter);
+          textField = document.getElementById("text-field" + counter);
+          console.log(textField.value);
+          
+        }
+      } else {
+        console.log("Inner text does not match placeholder text");
+      }
     });
   });
 
@@ -38,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
   keyboardBtn.addEventListener("click", newKeyboard);
 
   function newKeyboard() {
-    // get rows, clear rows, 
+    // get rows, clear rows,
     const buttonsToClear = document.querySelectorAll("button.key");
     deleteBtn.remove();
     clearBtn.remove();
@@ -89,11 +183,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //add delete button
     const deleteButton = document.createElement("button");
-      // Set the class and data-key attributes
-      deleteButton.classList.add("key");
-      deleteButton.classList.add("delete");
-      deleteButton.textContent = "Delete";
-      row1.appendChild(deleteButton);
+    // Set the class and data-key attributes
+    deleteButton.classList.add("key");
+    deleteButton.classList.add("delete");
+    deleteButton.textContent = "Delete";
+    row1.appendChild(deleteButton);
 
     //ROW 2
     const row2 = document.querySelector(".row2");
@@ -127,11 +221,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //add clear button
     const clearButton = document.createElement("button");
-      // Set the class and data-key attributes
-      clearButton.classList.add("key");
-      clearButton.classList.add("clear");
-      clearButton.textContent = "Clear";
-      row4.appendChild(clearButton);
+    // Set the class and data-key attributes
+    clearButton.classList.add("key");
+    clearButton.classList.add("clear");
+    clearButton.textContent = "Clear";
+    row4.appendChild(clearButton);
   }
 
   function shuffleArray(array) {
@@ -143,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function deleteLastCharacter() {
-    const textField = document.getElementById("text-field");
+    const textField = document.getElementById("text-field1");
     const currentValue = textField.value;
     textField.value = currentValue.substring(0, currentValue.length - 1);
   }
@@ -174,6 +268,18 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       startStopButton.innerText = "Start";
       stopTimer();
+    }
+  });
+
+  // so i'm going to need an event listener that's watching for when textfield inner text matches placeholder text
+  textField = document.getElementById("text-field1");
+  textField.addEventListener("input", function () {
+    console.log(textField.placeholder);
+    console.log(textField.value);
+    if (textField.value === textField.placeholder) {
+      console.log("Inner text matches placeholder text");
+    } else {
+      console.log("Inner text does not match placeholder text");
     }
   });
 });
