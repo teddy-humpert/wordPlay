@@ -11,6 +11,8 @@
 
 // let's get shuffle keyboard function down
 
+// now to styling
+
 const wordlist = [
   "PRINT",
   "VIGOR",
@@ -85,8 +87,8 @@ function shuffleArray(array) {
 
 document.addEventListener("DOMContentLoaded", () => {
   let counter = 1;
-    console.log(counter);
-  const keys = document.querySelectorAll(".key");
+  console.log(counter);
+  let keys = document.querySelectorAll(".key");
   let textField = document.getElementById("text-field" + counter);
   const currentValue = textField.value;
   const clearBtn = document.querySelector(".clear");
@@ -96,32 +98,62 @@ document.addEventListener("DOMContentLoaded", () => {
   let startStopButton = document.getElementById("start-stop");
   let intervalId;
   let startTime;
+  addKeyClickEventListener(keys);
+  console.log("added key click event");
 
   console.log(textField.placeholder);
 
-  keys.forEach((key) => {
-    key.addEventListener("click", () => {
-      textField.value += key.innerText;
-      console.log(key.innerText);
-      //NEED EVENT LISTENER ON KEY CAUSE INPUT IS SET TO KEYBOARD
-      if (textField.value === textField.placeholder) {
-        console.log("Inner text matches placeholder text");
-        if (counter === 5) {
-          alert("you did it!");
-          counter = 1;
-        } else {
-          counter++;
-          newKeyboard();
-          console.log(counter);
-          textField = document.getElementById("text-field" + counter);
-          console.log(textField.value);
-          
-        }
+  //   keys.forEach((key) => {
+  //     key.addEventListener("click", () => {
+  //       textField.value += key.innerText;
+  //       console.log(key.innerText);
+  //       //NEED EVENT LISTENER ON KEY CAUSE INPUT IS SET TO KEYBOARD
+  //       if (textField.value === textField.placeholder) {
+  //         console.log("Inner text matches placeholder text");
+  //         if (counter === 5) {
+  //           alert("you did it!");
+  //           counter = 1;
+  //         } else {
+  //           counter++;
+  //           newKeyboard();
+  //           console.log(counter);
+  //           textField = document.getElementById("text-field" + counter);
+  //           console.log(textField.value);
+
+  //         }
+  //       } else {
+  //         console.log("Inner text does not match placeholder text");
+  //       }
+  //     });
+  //   });
+
+  function handleKeyClick(event) {
+    textField.value += event.target.innerText;
+    console.log(event.target.innerText);
+    //NEED EVENT LISTENER ON KEY CAUSE INPUT IS SET TO KEYBOARD
+    if (textField.value === textField.placeholder) {
+      console.log("Inner text matches placeholder text");
+      if (counter === 5) {
+        alert("you did it!");
+        counter = 1;
       } else {
-        console.log("Inner text does not match placeholder text");
+        counter++;
+        newKeyboard();
+        console.log(counter);
+        textField = document.getElementById("text-field" + counter);
+        console.log(textField.value);
+        // Call the function to add the event listener
       }
+    } else {
+      console.log("Inner text does not match placeholder text");
+    }
+  }
+
+  function addKeyClickEventListener(keys) {
+    keys.forEach((key) => {
+      key.addEventListener("click", handleKeyClick);
     });
-  });
+  }
 
   clearBtn.addEventListener("click", () => {
     textField.value = "";
@@ -226,6 +258,11 @@ document.addEventListener("DOMContentLoaded", () => {
     clearButton.classList.add("clear");
     clearButton.textContent = "Clear";
     row4.appendChild(clearButton);
+    let keys = document.querySelectorAll(".key");
+    addKeyClickEventListener(keys);
+    // WOOHOO GOT IT! JUST HAD TO ADD ARRAY PARAM ... WOOT
+    console.log("added key click event");
+    
   }
 
   function shuffleArray(array) {
