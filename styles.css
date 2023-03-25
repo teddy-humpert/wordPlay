@@ -2,7 +2,7 @@
 flex box things
 can't wait for this to screw up all my logic */
 
-#timeDisplay {
+#stopwatch {
     display: flex;
     align-items: center;
     flex-direction: column;

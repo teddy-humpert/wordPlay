@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let startStopButton = document.getElementById("start-stop");
   let intervalId;
   let startTime;
+
   addKeyClickEventListener(keys);
   console.log("added key click event");
 
@@ -161,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   deleteBtn.addEventListener("click", deleteLastCharacter);
 
-  keyboardBtn.addEventListener("click", newKeyboard);
+//   keyboardBtn.addEventListener("click", newKeyboard);
 
   function newKeyboard() {
     // get rows, clear rows,
