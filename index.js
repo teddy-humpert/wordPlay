@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set the class and data-key attributes
     deleteButton.classList.add("key");
     deleteButton.classList.add("delete");
-    deleteButton.textContent = "Delete";
+    deleteButton.innerText = "\u2421";
     row1.appendChild(deleteButton);
 
     //ROW 2
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set the class and data-key attributes
     clearButton.classList.add("key");
     clearButton.classList.add("clear");
-    clearButton.textContent = "Clear";
+    clearButton.innerText = "\u2327";
     row4.appendChild(clearButton);
     let keys = document.querySelectorAll(".key");
     addKeyClickEventListener(keys);
