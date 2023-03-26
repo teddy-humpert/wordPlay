@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Word Play</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/keyboard.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Oswald:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
       rel="stylesheet"
@@ -25,7 +27,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     <h1 id="gameTitle">WordPlay</h1>
     <nav>
       <div class="dropdown">
-        <i id="dropIcon" class="fa fa-bars fa-2x dropIcon" ></i>
+        <i id="dropIcon" class="fa fa-bars fa-2x dropIcon"></i>
         <div class="dropdown-content">
           <a href="#">How to Play</a>
           <a href="#">Past Results</a>
@@ -44,21 +46,25 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
 
     <div class="you-did-it">
       <i id="close-you-did-it" class="fa fa-remove"></i>
-      <h1>YAHOO!!</h1>
-      <h1>YOU DID IT!</h1>
+      <h1>Time's up!</h1>
+      <h1>Great Job!</h1>
     </div>
-   
+
     <div id="stopwatch">
-      <p id="timer">00:00</p>
+      <p>Time Remaining:</p> 
+        <p id="timer">01:00</p>
       <!-- <h2 id="start-stop">Start</h2> -->
     </div>
-    <div class="textFields">
-      <input type="text" id="text-field1" />
-      <input type="text" id="text-field2" />
-      <input type="text" id="text-field3" />
-      <input type="text" id="text-field4" />
-      <input type="text" id="text-field5" />
+
+    <div id="scoreCount">
+      <p>Current Score:</p>
+      <p id="score"></p>
     </div>
+
+    <div class="textFields">
+        <input type="text" id="text-field" />
+      </div>
+
     <div id="keyboard">
       <div class="row1">
         <h2 class="key">Q</h2>
@@ -67,28 +73,48 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         <h2 class="key">R</h2>
         <h2 class="key">T</h2>
         <h2 class="key">Y</h2>
-        <h2 class="delete"><i class="fa fa-backspace"></i>
-        </h2>
-      </div>
-      <div class="row2">
         <h2 class="key">U</h2>
         <h2 class="key">I</h2>
         <h2 class="key">O</h2>
         <h2 class="key">P</h2>
+        <!-- <h2 class="delete"><i class="fa fa-backspace"></i>
+        </h2> -->
+      </div>
+      <div class="row2">
+        <!-- <h2 class="key">U</h2>
+        <h2 class="key">I</h2>
+        <h2 class="key">O</h2>
+        <h2 class="key">P</h2> -->
         <h2 class="key">A</h2>
         <h2 class="key">S</h2>
         <h2 class="key">D</h2>
-      </div>
-      <div class="row3">
         <h2 class="key">F</h2>
         <h2 class="key">G</h2>
         <h2 class="key">H</h2>
         <h2 class="key">J</h2>
         <h2 class="key">K</h2>
         <h2 class="key">L</h2>
-        <h2 class="key">Z</h2>
       </div>
-      <div class="row4">
+      <div class="row3">
+        <!-- <h2 class="key">F</h2>
+        <h2 class="key">G</h2>
+        <h2 class="key">H</h2>
+        <h2 class="key">J</h2>
+        <h2 class="key">K</h2>
+        <h2 class="key">L</h2> -->
+        <h2 class="clear"><i class="fa fa-remove"></i></h2>
+        <h2 class="key">Z</h2>
+        <h2 class="key">X</h2>
+        <h2 class="key">C</h2>
+        <h2 class="key">V</h2>
+        <h2 class="key">B</h2>
+        <h2 class="key">N</h2>
+        <h2 class="key">M</h2>
+        <h2 class="delete"><i class="fa fa-backspace"></i></h2>
+        <!-- <h2 class="clear"><i class="fa fa-remove"></i>
+        </h2> -->
+      </div>
+      <!-- <div class="row4">
         <h2 class="key">X</h2>
         <h2 class="key">C</h2>
         <h2 class="key">V</h2>
@@ -97,14 +123,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         <h2 class="key">M</h2>
         <h2 class="clear"><i class="fa fa-remove"></i>
         </h2>
-      </div>
+      </div> -->
     </div>
     <!-- <h2 class="newKeyboard">New Keyboard</h2> -->
 
-
-    <script src="index.js"></script>
+    <script src="keyboard.js"></script>
   </body>
 </html>
-
-
-
